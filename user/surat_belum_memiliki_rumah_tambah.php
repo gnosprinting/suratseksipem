@@ -5,7 +5,7 @@ if($_SESSION['level']=="" || $_SESSION['level']=="admin"){
 	header("location:login.php");
 }else {
 include ('header.php');
-include ('../lib/hari.php');
+//include ('../lib/hari.php');
 ?>
 <?php
 	$nik = $_GET ['nik'];

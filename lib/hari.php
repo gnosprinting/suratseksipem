@@ -44,6 +44,6 @@ function hari_ini(){
 
 }
 $sad = '2019-09-19';
-echo "Hari ini adalah ". hari_ini($sad);
+//echo "Hari ini adalah ". hari_ini($sad);
 
 ?>
