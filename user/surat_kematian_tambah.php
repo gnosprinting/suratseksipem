@@ -74,11 +74,11 @@ include ('../lib/umur.php');
 			$file_tmp_rs = $_FILES['s_rs']['tmp_name'];
 		//end rs
 		//upload surat pbb
-			$s_pbb		= $_FILES['s_pbb']['name'];
-			$x = explode('.', $s_pbb);
-			$ekstensi_pbb = strtolower(end($x));
-			$ukuran_pbb	= $_FILES['s_pbb']['size'];
-			$file_tmp_pbb = $_FILES['s_pbb']['tmp_name'];
+			// $s_pbb		= $_FILES['s_pbb']['name'];
+			// $x = explode('.', $s_pbb);
+			// $ekstensi_pbb = strtolower(end($x));
+			// $ukuran_pbb	= $_FILES['s_pbb']['size'];
+			// $file_tmp_pbb = $_FILES['s_pbb']['tmp_name'];
 		//end pbb
 		//upload surat ktp_saksi1
 			$s_ktp_saksi1		= $_FILES['s_ktp_saksi1']['name'];
@@ -109,8 +109,8 @@ include ('../lib/umur.php');
 								move_uploaded_file($file_tmp_ktp_saksi1, '../img/'.$s_ktp_saksi1);
 								move_uploaded_file($file_tmp_ktp_saksi2, '../img/'.$s_ktp_saksi2);
 								//insert to database
-								$insert = mysqli_query($koneksi, "INSERT INTO surat_kematian(no_surat,nik,nama,nik_mati,jk,alamat,umur,anak_ke,hari_meninggal,tanggal,jam,lokasi,penyebab,s_kk,s_ktp_pelapor,s_pengantar,s_ktp_mati,s_rs,s_pbb,ktp_saksi1,ktp_saksi2,status_surat)
-								VALUES('$no_surat','$nik','$nama','$nik_mati','$jk','$alamat','$umur','$anak_ke','$hari_meninggal','$tanggal','$jam','$lokasi','$penyebab','$s_kk','$s_ktp_pelapor','$s_pengantar','$s_ktp_mati','$s_rs','$s_pbb','$s_ktp_saksi1','$s_ktp_saksi2','$status_surat')") or die (mysqli_error ($koneksi));
+								$insert = mysqli_query($koneksi, "INSERT INTO surat_kematian(no_surat,nik,nama,nik_mati,jk,alamat,umur,anak_ke,hari_meninggal,tanggal,jam,lokasi,penyebab,s_kk,s_ktp_pelapor,s_pengantar,s_ktp_mati,s_rs,ktp_saksi1,ktp_saksi2,status_surat)
+								VALUES('$no_surat','$nik','$nama','$nik_mati','$jk','$alamat','$umur','$anak_ke','$hari_meninggal','$tanggal','$jam','$lokasi','$penyebab','$s_kk','$s_ktp_pelapor','$s_pengantar','$s_ktp_mati','$s_rs','$s_ktp_saksi1','$s_ktp_saksi2','$status_surat')") or die (mysqli_error ($koneksi));
 
 								$sql_mati = mysqli_query($koneksi, "SELECT * FROM t_penduduk WHERE nik='$nik_mati'");
 								$row_mati = mysqli_fetch_assoc($sql_mati);
@@ -274,10 +274,6 @@ include ('../lib/umur.php');
 			<div class="form-group">
 				<label class="control-label">Keterangan Rumahsakit (JPG,JPEG)</label>
 				<input type="file" name="s_rs"  value="" class="form-control">
-			</div>
-			<div class="form-group">
-				<label class="control-label">Lunas PBB (JPG,JPEG)</label>
-				<input type="file" name="s_pbb"  value="" class="form-control" >
 			</div>
 			<div class="form-group">
 				<label class="control-label">KTP Saksi 1 (JPG,JPEG)</label>

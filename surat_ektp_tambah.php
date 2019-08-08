@@ -90,7 +90,7 @@ include ('header.php');
 		}
 	}
 	    ?>
-		<h2>Data Surat Domisili &raquo; Tambah Data</h2>
+		<h2>Data Surat E-KTP &raquo; Tambah Data</h2>
 		<hr />
 		<form class="form-horizontal" action="surat_ektp_tambah.php?nik=<?php echo $nik; ?>" method="post" enctype="multipart/form-data">
   <div class="row">

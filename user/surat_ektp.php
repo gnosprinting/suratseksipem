@@ -12,7 +12,7 @@ if(isset($_POST['qcari'])) {
 }
 ?>
 <div class="card">
-	<h2 style="margin:10px;">Data Surat Domisili</h2>
+	<h2 style="margin:10px;">Data Surat E-KTP</h2>
 		<div class="form-group">
 			<?php
 				$sql = mySqli_query ($koneksi, $mySql) or die ("Query salah : ".mysqli_error ($koneksi));
