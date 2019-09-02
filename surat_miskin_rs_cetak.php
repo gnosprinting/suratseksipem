@@ -19,6 +19,12 @@
 		$rol = mysqli_fetch_assoc($sql_ttd);
 	}
 	$tgl_surat = $row['tgl_surat'];
+	function rupiah($angka){
+
+		$hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+		return $hasil_rupiah;
+
+	}
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,14 +129,17 @@
 	    <h5>Tpt & Tanggal lahir</h5>
 	    <h5>Jenis Kelamin</h5>
 	    <h5>Pekerjaan</h5>
+			<h5>Penghasilan</h5>
 			<h5>Alamat</h5>
 		</div>
     <div class="col-md-7">
+
 	    <h5>:&nbsp<b><?php echo $row['nama'] ?></b></h5>
 			<h5>:&nbsp<?php echo $row['nik'] ?></h5>
 			<h5>:&nbsp<?php echo $row['tempat_lhr']?>&nbsp<?php echo $row['tgl_lhr']?></h5>
 			<h5>:&nbsp<?php echo $row['jk']?> </h5>
 	    <h5>:&nbsp<?php echo $row['pekerjaan']?> </h5>
+			<h5>:&nbsp<?php echo rupiah($row['penghasilan'])?> </h5>
 			<h5>
 				:&nbsp<?php echo $row['alamat']?> </br>
 				&nbsp RT/RW. <?php echo $row['rt_rw']?> Kel. Loktabat Selatan </br>

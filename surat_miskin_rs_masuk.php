@@ -5,10 +5,10 @@ if($_SESSION['level']=="" || $_SESSION['level']=="rakyat"){
 	header("location:login.php");
 }else {
 include ('header.php');
-$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=1";
+$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=1 and status_surat='diproses'";
 if(isset($_POST['qcari'])) {
 	$qcari=$_POST['qcari'];
-	$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=1 and id like '%$qcari%'nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%'";
+	$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=1 and status_surat='diproses' nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%'";
 }
 function rupiah($angka){
 

@@ -21,7 +21,7 @@ include ('../lib/hari_indo.php');
 
 	//Proses Simpan Data
 	if(isset($_POST['add'])){
-		//print_r($_POST);
+
 		$no_surat		= $_POST['no_surat'];
 		$nama				= $row['nama'];
 		$nik				= $row['nik'];
@@ -32,7 +32,8 @@ include ('../lib/hari_indo.php');
 		$rt_rw			    = $row['rt_rw'];
 		$acara			= $_POST['acara'];
 		$tgl			= $_POST['tgl'];
-		$hari			= hari_indo($tgl);
+		$haris			= hari_indo($tgl);
+		$hari			= mysqli_real_escape_string($koneksi,$haris);
 		$jam			= $_POST['jam'];
 		$tempat			= $_POST['tempat'];
 		$hiburan			= $_POST['hiburan'];
@@ -108,9 +109,11 @@ include ('../lib/hari_indo.php');
 								move_uploaded_file($file_tmp_pbb, '../img/'.$s_pbb);
 								move_uploaded_file($file_tmp_saksi1, '../img/'.$s_saksi1);
 								move_uploaded_file($file_tmp_ktp_saksi2, '../img/'.$s_ktp_saksi2);
+								//print_r($s_saksi1);
+								// die();
 								//insert to database
-								$insert = mysqli_query($koneksi, "INSERT INTO surat_ijin_keramaian(no_surat,nama,nik,tempat_lhr,tgl_lhr,pekerjaan,alamat,rt_rw,acara,hari,tgl,jam,tempat,hiburan,s_pengantar,s_ktp,s_kk,s_pernyataan,ktp_saksi1,ktp_saksi2,s_pbb,status_surat)
-								VALUES('$no_surat','$nama','$nik','$tempat_lhr','$tanggal','$pekerjaan','$alamat','$rt_rw','$acara','$hari','$tgl','$jam','$tempat','$hiburan','$s_pengantar','$s_ktp','$s_kk','$s_pernyataan','$s_saksi1','$s_ktp_saksi2','$s_pbb','$status_surat')") or die (mysqli_error ($koneksi));
+								$insert = mysqli_query($koneksi, "INSERT INTO surat_ijin_keramaian( no_surat, nama, nik, tempat_lhr, tgl_lhr, pekerjaan, alamat, rt_rw, acara, hari, tgl, jam, tempat, hiburan, status_surat, s_pengantar, s_ktp, s_kk, s_pernyataan, ktp_saksi1, ktp_saksi2, s_pbb)
+								VALUES('$no_surat','$nama','$nik','$tempat_lhr','$tanggal','$pekerjaan','$alamat','$rt_rw','$acara','$hari','$tgl','$jam','$tempat','$hiburan','$status_surat','$s_pengantar','$s_ktp','$s_kk','$s_pernyataan','$s_saksi1','$s_ktp_saksi2','$s_pbb')") or die (mysqli_error ($koneksi));
 
 								if($insert){
 									echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Surat berhasil disimpan.</div>

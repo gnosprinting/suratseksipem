@@ -6,10 +6,10 @@ if($_SESSION['level']=="" || $_SESSION['level']=="rakyat"){
 }else {
 include ('header.php');
 
-$mySql="SELECT * FROM surat_pindah WHERE tgl_surat";
+$mySql="SELECT * FROM surat_pindah WHERE status_surat='diproses'";
 if(isset($_POST['qcari'])) {
 	$qcari=$_POST['qcari'];
-	$mySql="SELECT * FROM surat_pindah WHERE nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%' or tgl_surat like '%$qcari%'";
+	$mySql="SELECT * FROM surat_pindah WHERE status_surat='diproses' and nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%' or tgl_surat like '%$qcari%'";
 }
 ?>
 <div class="card">

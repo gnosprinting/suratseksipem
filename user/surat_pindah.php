@@ -30,7 +30,6 @@ if(isset($_POST['qcari'])) {
 			<th scope="col" class="text-center">Nama</th>
 			<th scope="col" class="text-center">NIK</th>
 			<th scope="col" class="text-center">Status Surat</th>
-      <th scope="col" class="text-center">Tools</th>
 		</tr>
 		</thead>
 <?php

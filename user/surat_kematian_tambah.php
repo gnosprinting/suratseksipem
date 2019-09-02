@@ -111,7 +111,7 @@ include ('../lib/umur.php');
 								//insert to database
 								$insert = mysqli_query($koneksi, "INSERT INTO surat_kematian(no_surat,nik,nama,nik_mati,jk,alamat,umur,anak_ke,hari_meninggal,tanggal,jam,lokasi,penyebab,s_kk,s_ktp_pelapor,s_pengantar,s_ktp_mati,s_rs,ktp_saksi1,ktp_saksi2,status_surat)
 								VALUES('$no_surat','$nik','$nama','$nik_mati','$jk','$alamat','$umur','$anak_ke','$hari_meninggal','$tanggal','$jam','$lokasi','$penyebab','$s_kk','$s_ktp_pelapor','$s_pengantar','$s_ktp_mati','$s_rs','$s_ktp_saksi1','$s_ktp_saksi2','$status_surat')") or die (mysqli_error ($koneksi));
-
+								
 								$sql_mati = mysqli_query($koneksi, "SELECT * FROM t_penduduk WHERE nik='$nik_mati'");
 								$row_mati = mysqli_fetch_assoc($sql_mati);
 								//$id_mati = $row_mati['id'];

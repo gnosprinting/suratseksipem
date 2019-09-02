@@ -46,6 +46,18 @@
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Filter Penduduk
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="penduduk_data_belum_memiliki_rumah.php">Belum Memiliki Rumah</a>
+					<a class="dropdown-item" href="penduduk_data_duda_janda.php">Duda/Janda</a>
+					<a class="dropdown-item" href="penduduk_data_miskin.php">Miskin</a>
+					<a class="dropdown-item" href="penduduk_data_mati.php">Mati</a>
+					<a class="dropdown-item" href="penduduk_data_pindah.php">Pindah</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Surat
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -63,6 +75,25 @@
 					<a class="dropdown-item" href="surat_miskin_bs.php">Surat Miskin Beasiswa</a>
 				</div>
 			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Surat Masuk
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="surat_domisili_masuk.php">Surat Domisili</a>
+					<a class="dropdown-item" href="surat_kelahiran_masuk.php">Surat Kelahiran</a>
+					<a class="dropdown-item" href="surat_kematian_masuk.php">Surat Kematian</a>
+					<a class="dropdown-item" href="surat_pindah_masuk.php">Surat Pindah</a>
+					<a class="dropdown-item" href="surat_kehilangan_masuk.php">Surat Kehilangan</a>
+					<a class="dropdown-item" href="surat_ektp_masuk.php">Surat e-Ktp</a>
+					<a class="dropdown-item" href="surat_belum_memiliki_rumah_masuk.php">Surat Belum Memiliki Rumah</a>
+					<a class="dropdown-item" href="surat_domisili_usaha_masuk.php">Surat Domisili Usaha</a>
+					<a class="dropdown-item" href="surat_duda_janda_masuk.php">Surat Duda / Janda</a>
+					<a class="dropdown-item" href="surat_keramaian_masuk.php">Surat Ijin Keramaian</a>
+					<a class="dropdown-item" href="surat_miskin_rs_masuk.php">Surat Miskin Rumah Sakit</a>
+					<a class="dropdown-item" href="surat_miskin_bs_masuk.php">Surat Miskin Beasiswa</a>
+				</div>
+			</li>
 			<!-- <li class="nav-item">
 			<a class="nav-link" href="profil_kelurahan.php">Profil kelurahan</a>
 		</li> -->
@@ -71,6 +102,7 @@
 				Laporan
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+				<a class="dropdown-item" href="penduduk_lap.php"> Cetak Tabel Penduduk</a>
 				<a class="dropdown-item" href="surat_domisili_lap.php"> Cetak Tabel Surat Domisili</a>
 				<a class="dropdown-item" href="surat_kelahiran_lap.php">  Cetak Tabel Surat Kelahiran</a>
 				<a class="dropdown-item" href="surat_kematian_lap.php"> Cetak Tabel Surat Kematian</a>
@@ -81,7 +113,7 @@
 				<a class="dropdown-item" href="surat_domisili_usaha_lap.php"> Cetak Tabel Surat Domisili Usaha</a>
 				<a class="dropdown-item" href="surat_duda_janda_lap.php"> Cetak Tabel Surat Duda / Janda</a>
 				<a class="dropdown-item" href="surat_keramaian_lap.php"> Cetak Tabel Surat Ijin Keramaian</a>
-				<a class="dropdown-item" href="surat_miskin_keseluruhan_cetak.php"> Cetak Tabel Surat Keterangan Miskin</a>
+				<a class="dropdown-item" href="surat_miskin_lap.php"> Cetak Tabel Surat Keterangan Miskin</a>
 			</div>
 		</li>
 		<!-- <li class="nav-item">

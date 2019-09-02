@@ -5,10 +5,10 @@ if($_SESSION['level']=="" || $_SESSION['level']=="rakyat"){
 	header("location:login.php");
 }else {
 include ('header.php');
-$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=1";
+$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=2 and status_surat='diproses'";
 if(isset($_POST['qcari'])) {
 	$qcari=$_POST['qcari'];
-	$mySql="SELECT * FROM surat_tidakmampu WHERE jenis=1 and id like '%$qcari%'nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%'";
+	$mySql="SELECT * FROM surat_miskin_usaha WHERE jenis=2 and status_surat='diproses' nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%'";
 }
 function rupiah($angka){
 
@@ -18,11 +18,11 @@ function rupiah($angka){
 }
 ?>
 <div class="card">
-	<h2 style="margin:10px;">Data Surat Miskin (Rumah Sakit)</h2>
+	<h2 style="margin:10px;">Data Surat Miskin (Beasiswa)</h2>
 		<div class="form-group">
-			<a href="surat_miskin_keseluruhan_cetak1.php" class="btn btn-sm btn-primary " style="margin-left:10px;">Cetak Data</a>
+			<a href="surat_miskin_keseluruhan_cetak2.php" class="btn btn-sm btn-primary " style="margin-left:10px;">Cetak Data</a>
 			<div class="right"  style="margin-right:10px;">
-					<form class="" method="POST" action="surat_miskin_rs.php">
+					<form class="" method="POST" action="surat_miskin_bs.php">
 								<input type="text" class="form-control" name="qcari" placeholder="Cari surat miskin..." autofocus/>
 					</form>
 		</div>
@@ -54,40 +54,41 @@ function rupiah($angka){
 		<td class="text-center"><?php echo rupiah($penghasilans);  ?></td>
 		<td class="text-center"><?php echo $kolomData['atas_nama'];?></td>
 		<td class="text-center"><?php echo $kolomData['status_surat']; ?></td>
+			<td class="text-center"><?php echo $kolomData['status_surat']; ?></td>
 			<td>
 				<?php
 					if ($kolomData['status_surat'] == 'ditolak') {
 				?>
-				<a href="surat_miskin_rs_hapus.php?id=<?php echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
+				<a href="surat_miskin_hapus.php?id=<?php echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
 				hapus</a>
 				<?php
 					}
 				?>
 				<?php
-					//if ($kolomData['status_surat'] == 'baru') {
+					// if ($kolomData['status_surat'] == 'baru') {
 				?>
-				<!-- <a href="surat_miskin_rs_edit.php?id=<?php //echo $kolomData['id'];?>" class="btn btn-sm btn-warning" style="margin-top:5px;">Proses surat</a>
-				<a href="surat_miskin_rs_hapus.php?id=<?php //echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
+				<!-- <a href="surat_miskin_bs_edit.php?id=<?php //echo $kolomData['id'];?>" class="btn btn-sm btn-warning" style="margin-top:5px;">Proses surat</a>
+				<a href="surat_miskin_hapus.php?id=<?php //echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
 				hapus</a> -->
 				<?php
 					//}
 				?>
 				<?php
-					if ($kolomData['status_surat'] == 'diproses') {
+					 if ($kolomData['status_surat'] == 'diproses') {
 				?>
-				<a href="surat_miskin_rs_selesai.php?id=<?php echo $kolomData['id'];?>" class="btn btn-sm btn-warning" style="margin-top:5px;">Selesaikan surat</a>
-				<a href="surat_miskin_rs_hapus.php?id=<?php echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
+				<a href="surat_miskin_bs_selesai.php?id=<?php echo $kolomData['id'];?>" class="btn btn-sm btn-warning" style="margin-top:5px;">Selesaikan surat</a>
+				<a href="surat_miskin_hapus.php?id=<?php echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
 				hapus</a>
-				<a href="surat_miskin_rs_cetak.php?id=<?php echo $kolomData['id'];?>" class="btn btn-sm btn-success" style="margin-top:5px;">cetak surat</a>
+				<a href="surat_miskin_bs_cetak.php?id=<?php echo $kolomData['id'];?>" class="btn btn-sm btn-success" style="margin-top:5px;">cetak surat</a>
 				<?php
 					}
 				?>
 				<?php
 					if ($kolomData['status_surat'] == 'selesai') {
 				?>
-				<a href="surat_miskin_rs_hapus.php?id=<?php echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
+				<a href="surat_miskin_hapus.php?id=<?php echo $kolomData['id'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
 				hapus</a>
-				<a href="surat_miskin_rs_cetak.php?id=<?php echo $kolomData['id'];?>" class="btn btn-sm btn-success" style="margin-top:5px;">cetak surat</a>
+				<a href="surat_miskin_bs_cetak.php?id=<?php echo $kolomData['id'];?>" class="btn btn-sm btn-success" style="margin-top:5px;">cetak surat</a>
 				<?php
 					}
 				?>

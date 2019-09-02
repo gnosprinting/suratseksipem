@@ -2,6 +2,10 @@
 <?php
 	include ('koneksi.php');
 	include	('library.php');
+	if(isset($_POST['qcari'])) {
+		$qcari=$_POST['qcari'];
+		$mySql="SELECT * FROM t_penduduk WHERE nik like '%$qcari%' or nama like '%$qcari%' or thn_masuk like '%$qcari%'";
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,6 +92,7 @@
     <div class="container">
         <div class="isi">
         <h2 style="text-align:center;text-transform: uppercase;">DATA PENDUDUK <br> DI KELURAHAN LOKTABAT SELATAN</h2>
+				<h2 style="text-align:center;text-transform: uppercase;">TAHUN <?php echo $qcari ?></h2>
         <table class="table table-striped table-hover">
 		<thead >
 		<tr>
@@ -101,7 +106,7 @@
 		</tr>
 		</thead>
 <?php
-	$mySql = "SELECT * from t_penduduk";
+	$mySql = "SELECT * from t_penduduk WHERE thn_masuk like '%$qcari%'";
 	$myQry = mySqli_query ($koneksi, $mySql) or die ("Query salah : ".mysqli_error ($koneksi));
 	$nomor = 1;
 	while ($kolomData = mysqli_fetch_array ($myQry)) {

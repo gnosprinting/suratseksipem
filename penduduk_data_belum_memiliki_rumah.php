@@ -6,22 +6,22 @@ if($_SESSION['level']=="" || $_SESSION['level']=="rakyat"){
 }else {
 include ('header.php');
 
-$mySql="SELECT * FROM t_penduduk";
+$mySql="SELECT * FROM surat_belum_memiliki_rumah GROUP BY nik";
 if(isset($_POST['qcari'])) {
 	$qcari=$_POST['qcari'];
-	$mySql="SELECT * FROM t_penduduk WHERE nik like '%$qcari%' or nama like '%$qcari%' ";
+	$mySql="SELECT * FROM surat_belum_memiliki_rumah WHERE nik like '%$qcari%' or nama like '%$qcari%' GROUP BY nik";
 }
 
 ?>
 
 <div class="card">
-	<h2 style="margin:10px;">Data Penduduk</h2>
+	<h2 style="margin:10px;">Data Penduduk Belum Memiliki Rumah</h2>
 	<div class="form-group">
-		<a href="penduduk_tambah.php" class="btn btn-sm btn-primary " style="margin-left:10px;">Tambah data penduduk</a>
+		<!-- <a href="penduduk_tambah.php" class="btn btn-sm btn-primary " style="margin-left:10px;">Tambah data penduduk</a> -->
 		<!-- <a href="penduduk_cetak.php" class="btn btn-sm btn-success " style="margin-left:10px;">cetak data penduduk</a> -->
 
 		<div class="right"  style="margin-right:10px;">
-			<form class="" method="POST" action="penduduk_data.php">
+			<form class="" method="POST" action="penduduk_data_belum_memiliki_rumah.php">
 				<input type="text" class="form-control" name="qcari" placeholder="Cari penduduk..." autofocus/>
 			</form>
 		</div>
@@ -40,7 +40,6 @@ if(isset($_POST['qcari'])) {
 			<th scope="col" class="text-center">Status Pernikahan</th>
 			<th scope="col" class="text-center">Alamat</th>
 			<th scope="col" class="text-center">RT/RW</th>
-			<th scope="col" class="text-center">Option</th>
 		</tr>
 		</thead>
 <?php
@@ -59,12 +58,6 @@ if(isset($_POST['qcari'])) {
 			<td><?php echo $kolomData['status']; ?></td>
 			<td><?php echo $kolomData['alamat']; ?></td>
 			<td><?php echo $kolomData['rt_rw']; ?></td>
-			<td>
-				<a href="penduduk_edit.php?nik=<?php echo $kolomData ['nik'];?>" title="Edit data" class="btn btn-primary btn-sm">edit</a>
-				<a href="penduduk_hapus.php?nik=<?php echo $kolomData['nik'];?>" title="Hapus data" onClick="confirm ('Yakin menghapus Data ini?')" class="btn btn-danger btn-sm">
-				hapus</a>
-				<a href="surat_cetak.php?nik=<?php echo $kolomData['nik'];?>" class="btn btn-sm btn-success" style="margin-top:5px;">Buat Surat</a>
-			</td>
 		</tr>
 	<?php } ?>
 				</table>

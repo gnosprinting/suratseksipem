@@ -1,7 +1,10 @@
 <?php
 	include ('koneksi.php');
     include	('library.php');
-
+		if(isset($_POST['qcari'])) {
+			$qcari=$_POST['qcari'];
+			$mySql="SELECT * FROM surat_tidakmampu WHERE nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%' or tgl_surat like '%$qcari%'";
+		}
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,9 +96,15 @@
 
             </div>
     </div>
+		<?php
+		$mySql = "SELECT * from surat_tidakmampu";
+		$myQry = mySqli_query ($koneksi, $mySql) or die ("Query salah : ".mysqli_error ($koneksi));
+		$r=mysqli_fetch_assoc($myQry);
+		?>
     <hr style="hight:3px!important;">
         <div class="isi">
-        <h2 style="text-align:center;text-transform: uppercase;">Laporan SURAT DOMISILI USAHA</h2>
+        <h2 style="text-align:center;text-transform: uppercase;">Laporan SURAT KETERANGAN MISKIN</h2>
+				<h2 style="text-align:center;text-transform: uppercase;">TAHUN <?php echo $qcari ?></h2>
         <div class="content" style="padding:3% !important;">
 	<div class="table-responsive">
 
@@ -107,12 +116,11 @@
 				<th scope="col" class="text-center">Tempat tanggal lahir</th>
 				<th scope="col" class="text-center">Jenis Kelamin</th>
 				<th scope="col" class="text-center">Alamat</b></th>
-
+				<th scope="col" class="text-center">Ket</b></th>
 		</tr>
 		</thead>
 <?php
-	$mySql = "SELECT * from surat_tidakmampu";
-	$myQry = mySqli_query ($koneksi, $mySql) or die ("Query salah : ".mysqli_error ($koneksi));
+
 	$nomor = 1;
 	while ($kolomData = mysqli_fetch_array ($myQry)) {
 ?>
@@ -122,6 +130,12 @@
 			<td><?php echo $kolomData['tempat_lhr'];?>-<?php echo $kolomData['tgl_lhr'];?></td>
 			<td><?php echo $kolomData['jk']; ?></td>
 			<td><?php echo $kolomData['alamat']; ?></td>
+			<?php if ($kolomData['jenis']==1) {?>
+				<td>Berobat</td>
+			<?php } ?>
+			<?php if ($kolomData['jenis']==2) {?>
+				<td>Beasiswa</td>
+			<?php } ?>
 		</tr>
 	<?php } ?>
 				</table>

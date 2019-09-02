@@ -106,7 +106,8 @@ include ('header.php');
 								//insert to database
 								$insert = mysqli_query($koneksi, "INSERT INTO surat_belum_memiliki_rumah( nama,nik,tgl_lhr,tempat_lhr,jk,status,negara,agama,pekerjaan,alamat,rt_rw,keperluan,s_kk,s_ktp,s_pengantar,s_pernyataan,ktp_saksi1,ktp_saksi2,status_surat)
 								VALUES('$nama','$nik','$tanggal','$tempat_lhr','$jk','$status','$negara','$agama','$pekerjaan','$alamat','$rt_rw','$keperluan','$s_kk','$s_ktp','$s_pengantar','$s_pernyataan','$s_saksi1','$s_ktp_saksi2','$status_surat')") or die (mysqli_error ($koneksi));
-
+								// var_dump($insert);
+								// die();
 								if($insert){
 									echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Surat berhasil disimpan.</div>
 									<meta http-equiv="refresh" content="5; url=surat_belum_memiliki_rumah.php"/>';

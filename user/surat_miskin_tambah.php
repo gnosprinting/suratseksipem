@@ -33,6 +33,7 @@ include ('header.php');
 		$tgl_surat		= $_POST['tgl_surat'];
 		$jenis		= $_POST['jenis'];
 		$atas_nama		= $_POST['atas_nama'];
+		$penghasilan		= $_POST['penghasilan'];
 		$status_surat		= 'diproses';
 		$ekstensi_diperbolehkan	= array('png','jpg','jpeg');
 		//upload surat pengantar
@@ -106,8 +107,8 @@ include ('header.php');
 								move_uploaded_file($file_tmp_saksi1, '../img/'.$s_saksi1);
 								move_uploaded_file($file_tmp_ktp_saksi2, '../img/'.$s_ktp_saksi2);
 								//insert to database
-								$insert = mysqli_query($koneksi, "INSERT INTO surat_tidakmampu(no_surat,nik,nama,tempat_lhr,tgl_lhr,jk,pekerjaan,alamat,rt_rw,nmr_surat,tgl_surat,jenis,atas_nama,s_kk,s_ktp,s_pengantar,s_pernyataan,s_pbb,ktp_saksi1,ktp_saksi2,status_surat)
-								VALUES('$no_surat','$nik','$nama','$tempat_lahir','$tanggal_lahir','$jenis_kelamin','$pekerjaan','$alamat','$rt_rw','$nmr_surat','$tgl_surat','$jenis','$atas_nama','$s_kk','$s_ktp','$s_pengantar','$s_pernyataan','$s_pbb','$s_saksi1','$s_ktp_saksi2','$status_surat')") or die (mysqli_error ($koneksi));
+								$insert = mysqli_query($koneksi, "INSERT INTO surat_tidakmampu(no_surat,nik,nama,tempat_lhr,tgl_lhr,jk,pekerjaan,alamat,rt_rw,nmr_surat,tgl_surat,jenis,atas_nama,penghasilan,s_kk,s_ktp,s_pengantar,s_pernyataan,s_pbb,ktp_saksi1,ktp_saksi2,status_surat)
+								VALUES('$no_surat','$nik','$nama','$tempat_lahir','$tanggal_lahir','$jenis_kelamin','$pekerjaan','$alamat','$rt_rw','$nmr_surat','$tgl_surat','$jenis','$atas_nama','$penghasilan','$s_kk','$s_ktp','$s_pengantar','$s_pernyataan','$s_pbb','$s_saksi1','$s_ktp_saksi2','$status_surat')") or die (mysqli_error ($koneksi));
 
 								if($insert){
 									echo '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Surat berhasil disimpan.</div>
@@ -173,6 +174,10 @@ include ('header.php');
 		<div class="form-group">
 			<label class="control-label">Atas Nama</label>
 			<input type="text" name="atas_nama"  value="" class="form-control" placeholder="atas nama" required>
+		</div>
+		<div class="form-group">
+			<label class="control-label">Penghasilan</label>
+			<input type="number" name="penghasilan"  value="" class="form-control" placeholder="2000000" required>
 		</div>
 			<div class="form-group">
 				<label class="control-label">ktp (JPG,JPEG)</label>

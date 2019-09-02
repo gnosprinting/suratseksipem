@@ -100,6 +100,7 @@
     <hr style="hight:3px!important;">
         <div class="isi">
         <h2 style="text-align:center;text-transform: uppercase;">Laporan SURAT IJIN KERAMAIAN</h2>
+		<h2 style="text-align:center;text-transform: uppercase;">TAHUN <?php echo $qcari ?></h2>
         <div class="content" style="padding:3% !important;">
 	<div class="table-responsive">
 

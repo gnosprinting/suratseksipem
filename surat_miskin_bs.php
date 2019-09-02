@@ -10,6 +10,12 @@ if(isset($_POST['qcari'])) {
 	$qcari=$_POST['qcari'];
 	$mySql="SELECT * FROM surat_miskin_usaha WHERE jenis=2 and id like '%$qcari%'nik like '%$qcari%' or nama like '%$qcari%' or no_surat like '%$qcari%'";
 }
+function rupiah($angka){
+
+	$hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+	return $hasil_rupiah;
+
+}
 ?>
 <div class="card">
 	<h2 style="margin:10px;">Data Surat Miskin (Beasiswa)</h2>
@@ -26,12 +32,11 @@ if(isset($_POST['qcari'])) {
 	<table class="table table-striped table-hover">
 		<thead >
 		<tr>
-			<th scope="col" class="text-center">Nama</th>
 			<th scope="col" class="text-center">No Surat</th>
-			<th scope="col" class="text-center">Nik</th>
-			<th scope="col" class="text-center">Tpt & Tgl lahir</th>
-			<th scope="col" class="text-center">Jenis Kelamin</th>
-			<th scope="col" class="text-center">Alamat</th>
+			<th scope="col" class="text-center">Nama</th>
+			<th scope="col" class="text-center">Pekerjaan</th>
+			<th scope="col" class="text-center">Penghasilan</th>
+			<th scope="col" class="text-center">Untuk</th>
 			<th scope="col" class="text-center">Status Surat</th>
       <th scope="col" class="text-center">Tools</th>
 		</tr>
@@ -40,14 +45,15 @@ if(isset($_POST['qcari'])) {
 	$myQry = mySqli_query ($koneksi, $mySql) or die ("Query salah : ".mysqli_error ($koneksi));
 	$nomor = 1;
 	while ($kolomData = mysqli_fetch_array ($myQry)) {
+		$penghasilans=$kolomData['penghasilan'];
 ?>
 	<tr>
-			<td class="text-center"><?php echo $kolomData['nama']; ?></td>
-			<td class="text-center"><?php echo $kolomData['no_surat']; ?></td>
-			<td class="text-center"><?php echo $kolomData['nik']; ?></td>
-			<td class="text-center"><?php echo $kolomData['tempat_lhr'];?>-<?php echo $kolomData['tgl_lhr'];?></td>
-			<td class="text-center"><?php echo $kolomData['jk']; ?></td>
-			<td class="text-center"><?php echo $kolomData['alamat']; ?></td>
+		<td class="text-center"><?php echo $kolomData['no_surat']; ?></td>
+		<td class="text-center"><?php echo $kolomData['nama']; ?></td>
+		<td class="text-center"><?php echo $kolomData['pekerjaan']; ?></td>
+		<td class="text-center"><?php echo rupiah($penghasilans);  ?></td>
+		<td class="text-center"><?php echo $kolomData['atas_nama'];?></td>
+		<td class="text-center"><?php echo $kolomData['status_surat']; ?></td>
 			<td class="text-center"><?php echo $kolomData['status_surat']; ?></td>
 			<td>
 				<?php

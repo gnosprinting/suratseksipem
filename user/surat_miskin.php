@@ -10,6 +10,13 @@ if(isset($_POST['qcari'])) {
 	$qcari=$_POST['qcari'];
 	$mySql="SELECT * FROM surat_tidakmampu WHERE nik like '%$qcari%' or nama like '%$qcari%' ";
 }
+
+function rupiah($angka){
+
+	$hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+	return $hasil_rupiah;
+
+}
 ?>
 <div class="card">
 	<h2 style="margin:10px;">Data Surat miskin</h2>
@@ -29,6 +36,7 @@ if(isset($_POST['qcari'])) {
 			<th scope="col" class="text-center">No Surat</th>
 			<th scope="col" class="text-center">Nama</th>
 			<th scope="col" class="text-center">Pekerjaan</th>
+			<th scope="col" class="text-center">Penghasilan</th>
 			<th scope="col" class="text-center">Untuk</th>
 			<th scope="col" class="text-center">Status Surat</th>
       <th scope="col" class="text-center">Tools</th>
@@ -38,11 +46,13 @@ if(isset($_POST['qcari'])) {
 	$myQry = mySqli_query ($koneksi, $mySql) or die ("Query salah : ".mysqli_error ($koneksi));
 	$nomor = 1;
 	while ($kolomData = mysqli_fetch_array ($myQry)) {
+		$penghasilans=$kolomData['penghasilan'];
 ?>
 		<tr>
 			<td class="text-center"><?php echo $kolomData['no_surat']; ?></td>
 			<td class="text-center"><?php echo $kolomData['nama']; ?></td>
 			<td class="text-center"><?php echo $kolomData['pekerjaan']; ?></td>
+			<td class="text-center"><?php echo rupiah($penghasilans);  ?></td>
 			<td class="text-center"><?php echo $kolomData['atas_nama'];?></td>
 			<td class="text-center"><?php echo $kolomData['status_surat']; ?></td>
 			<td>
